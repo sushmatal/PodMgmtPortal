@@ -1,0 +1,4 @@
+﻿CREATE TABLE [CONFIG].[Users]
+(
+	[Id] INT NOT NULL PRIMARY KEY
+)
