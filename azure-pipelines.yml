@@ -14,13 +14,19 @@ variables:
 
 steps:
 - task: DotNetCoreCLI@2
+  displayName: Restore
   inputs:
     workingDirectory: \PodMgmtPortal
     command: 'restore'
+    projects: '**/*.csproj'
 - task: UseDotNet@2
   inputs:
     version: '5.0.x'
     includePreviewVersions: true # Required for preview versions
 
-- script: dotnet build --configuration $(buildConfiguration)
+- task: DotNetCoreCLI@2
   displayName: 'dotnet build $(buildConfiguration)'
+  inputs:
+    command: build
+    projects: '**/*.csproj'
+    arguments: '--configuration $(buildConfiguration)' # Update this to match your need
