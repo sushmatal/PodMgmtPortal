@@ -13,5 +13,14 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- task: DotNetCoreCLI@2
+  inputs:
+    workingDirectory: \PodMgmtPortal
+    command: 'restore'
+- task: UseDotNet@2
+  inputs:
+    version: '5.0.x'
+    includePreviewVersions: true # Required for preview versions
+
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
